@@ -4,17 +4,22 @@ socket.on('connect',function(){
   console.log("connected to server from index.html");
   socket.on('getchannels',(channels)=>{
     console.log("channels",channels);
+
     var options=jQuery('<option></option>');
     channels.forEach((channel)=>{
       console.log("channel",channel);
       options.text(channel.c_name);
       jQuery('#channel').append(options);
-      // datalist.append(jQuery('<option></option>').text(channel));
     });
-    //to replace complete list use html();
 
-  });
-
+    // var str='';
+    // channels.forEach((channel)=>{
+    //   console.log("channel",channel);
+    //   str += `<option value=${channel.c_name}/>`
+    //
+    // });
+    // jQuery('#channel').innerHTML=str;
+});
 });
 
 
