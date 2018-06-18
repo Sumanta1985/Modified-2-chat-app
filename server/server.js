@@ -64,11 +64,15 @@ io.on('connection',(socket)=>{ //lets you listen for new connection and let's yo
 
   socket.on('disconnect',()=>{
     console.log('Client connection closed');
-    var remove_user=user.getuser(socket.id);
-    console.log("socketid",socket.id);
+    // var remove_user=user.getuser(socket.id);
+    // console.log("socketid",socket.id);
     var remove_user=user.removeuser(socket.id);
     if (remove_user.length > 0) {
       io.to(remove_user[0].c_name).emit('userlist',user.getuserlist(remove_user[0].c_name));
+      var userNames=user.getuserlist(remove_user[0].c_name);
+      if (userNames.length === 0){
+        channel.removeChannel(remove_user[0].c_name);
+      }
       // console.log('removed user:',remove_user);
       // console.log('users:',user);
       socket.broadcast.to(remove_user[0].c_name).emit('NewChat',generateMessage('Admin',`${remove_user[0].name} has left`));

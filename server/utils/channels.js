@@ -18,6 +18,18 @@ class Channels{
   getchannels(){
     return this.channels;
   }
+
+  removeChannel(c_name){
+    //returns an array excluding the user
+    // var user=this.getuser(id);
+    this.channels=this.channels.filter(channel=>channel.c_name!=c_name);
+    // return user;
+  }
+
+  // getChannel(id){
+  //   var user=this.users.filter(user=>user.id===id);
+  //   return user;
+  // }
 }
 
 module.exports={Channels};

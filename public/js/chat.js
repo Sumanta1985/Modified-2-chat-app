@@ -15,13 +15,13 @@ function scrollToBottom(){
   //scroling upto that number will not enable auto scroll. here 30 pixel used.
   var lastMessageHeight=newMessage.prev().innerHeight();
 
-  console.log('clientHeight',clientHeight);
-  console.log('scrollTop',scrollTop);
-  console.log('newMessageHeight',newMessageHeight);
-  console.log('lastMessageHeight',lastMessageHeight);
-  console.log('scrollHeight',scrollHeight);
-
-  console.log("total length: ",clientHeight+scrollTop+newMessageHeight);
+  // console.log('clientHeight',clientHeight);
+  // console.log('scrollTop',scrollTop);
+  // console.log('newMessageHeight',newMessageHeight);
+  // console.log('lastMessageHeight',lastMessageHeight);
+  // console.log('scrollHeight',scrollHeight);
+  //
+  // console.log("total length: ",clientHeight+scrollTop+newMessageHeight);
 //Basically to enable autoscroll minimum clientHeight+scrollTop+newMessageHeight has to be equal to scrollHeight
 //here 30 used to allow upto 30 pixel scroll up will not enable auto scroll
   if (clientHeight+scrollTop+newMessageHeight+30>=scrollHeight){
