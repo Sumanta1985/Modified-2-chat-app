@@ -12,20 +12,10 @@ socket.on('connect',function(){
       options.text(channel.c_name);
       jQuery('#channel').append(options);
     });
-
-    // var str='';
-    // channels.forEach((channel)=>{
-    //   console.log("channel",channel);
-    //   str += `<option value=${channel.c_name}/>`
-    //
-    // });
-    // jQuery('#channel').innerHTML=str;
-});
+  });
 });
 
 
 socket.on('disconnect',function(){
   console.log("Disconnected from Server from Index page");
-  // var param=jQuery.deparam(window.location.search);
-  // socket.emit('exit',param);
 });

@@ -12,7 +12,7 @@ function scrollToBottom(){
   var scrollHeight=messages.prop("scrollHeight");
   var newMessageHeight=newMessage.innerHeight();
   //Not required,instead of this any number can work what udemy trying to do,
-  //scroling upto that number will not enable auto scroll. here 30 pixel used.
+  //scrolling up upto that number will not enable auto scroll. here 30 pixel used.
   var lastMessageHeight=newMessage.prev().innerHeight();
 
   // console.log('clientHeight',clientHeight);
