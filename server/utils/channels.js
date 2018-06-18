@@ -1,6 +1,6 @@
 class Channels{
   constructor(){
-    this.channels=[{c_name:'room1'},{c_name:'room2'},{c_name:'room3'}];
+    this.channels=[];
   }
 
   addchannel(c_name){

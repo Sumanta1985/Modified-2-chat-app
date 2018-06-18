@@ -11,16 +11,20 @@ function scrollToBottom(){
   var scrollTop=messages.prop("scrollTop");
   var scrollHeight=messages.prop("scrollHeight");
   var newMessageHeight=newMessage.innerHeight();
-  //Not required,instead of this any number can work what udemy trying to do
+  //Not required,instead of this any number can work what udemy trying to do,
+  //scroling upto that number will not enable auto scroll. here 30 pixel used.
   var lastMessageHeight=newMessage.prev().innerHeight();
 
-  // console.log('clientHeight',clientHeight);
-  // console.log('scrollTop',scrollTop);
-  // console.log('newMessageHeight',newMessageHeight);
-  // console.log('lastMessageHeight',lastMessageHeight);
-  // console.log('scrollHeight',scrollHeight);
+  console.log('clientHeight',clientHeight);
+  console.log('scrollTop',scrollTop);
+  console.log('newMessageHeight',newMessageHeight);
+  console.log('lastMessageHeight',lastMessageHeight);
+  console.log('scrollHeight',scrollHeight);
 
-  if (clientHeight+scrollTop+newMessageHeight>=scrollHeight){
+  console.log("total length: ",clientHeight+scrollTop+newMessageHeight);
+//Basically to enable autoscroll minimum clientHeight+scrollTop+newMessageHeight has to be equal to scrollHeight
+//here 30 used to allow upto 30 pixel scroll up will not enable auto scroll
+  if (clientHeight+scrollTop+newMessageHeight+30>=scrollHeight){
     // console.log('Should scroll');
     messages.scrollTop(scrollHeight);
   }
@@ -28,6 +32,7 @@ function scrollToBottom(){
 
 socket.on('connect',function(){
   console.log("connected to server");
+  console.log("socketid in chat.js",socket.id);
   var param=jQuery.deparam(window.location.search);
   socket.emit('join',param,(err)=>{
     if (err){

@@ -23,7 +23,7 @@ app.use(express.static(publicPath));
 
 io.on('connection',(socket)=>{ //lets you listen for new connection and let's you do something in 2nd argument
   console.log("new user connected");
-
+  console.log("socketid",socket.id);
   socket.emit('getchannels',channel.getchannels());
 
   socket.on('join',(param,callback)=>{
@@ -64,13 +64,15 @@ io.on('connection',(socket)=>{ //lets you listen for new connection and let's yo
 
   socket.on('disconnect',()=>{
     console.log('Client connection closed');
-    // var remove_user=user.getuser(socket.id);
+    var remove_user=user.getuser(socket.id);
     console.log("socketid",socket.id);
     var remove_user=user.removeuser(socket.id);
-    io.to(remove_user[0].c_name).emit('userlist',user.getuserlist(remove_user[0].c_name));
-    // console.log('removed user:',remove_user);
-    // console.log('users:',user);
-    socket.broadcast.to(remove_user[0].c_name).emit('NewChat',generateMessage('Admin',`${remove_user[0].name} has left`));
+    if (remove_user.length > 0) {
+      io.to(remove_user[0].c_name).emit('userlist',user.getuserlist(remove_user[0].c_name));
+      // console.log('removed user:',remove_user);
+      // console.log('users:',user);
+      socket.broadcast.to(remove_user[0].c_name).emit('NewChat',generateMessage('Admin',`${remove_user[0].name} has left`));
+    }
   });
 });
 
